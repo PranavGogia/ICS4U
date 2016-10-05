@@ -1,7 +1,7 @@
 
 public class Student {
 
-	
+
 	private String firstName;
 	private String lastName;
 	private String streetAdress;
@@ -10,8 +10,28 @@ public class Student {
 	private long phoneNumber;
 	private String postalCode;
 	private String birthDate;
+	private static long idGenerator = 342000000;
+	private long studentNumber;
+	public Student (String name ,String secondName, String adress, String municipality, String lprovince , long number,String post, String birth ){
 	
 	
+		 setFirstName(name);
+		 setLastName(secondName);
+		 setStreetAdress(adress);
+		 setCity(municipality);
+		 setProvince(lprovince);
+		 setPhoneNumber(number);
+		 setPostalCode(post);
+		 setBirthDate(birth);
+		
+	}
+	
+
+	public Student(){
+		
+		this.studentNumber = idGenerator;
+		idGenerator++;
+	}
 	
 	
 	

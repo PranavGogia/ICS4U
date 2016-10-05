@@ -25,6 +25,7 @@ public class SchoolSystem {
 		System.out.println("4. Remove student");
 		System.out.println("5. Replace student info");
 		System.out.println("10. Quit");
+
 		do {
 
 
@@ -61,7 +62,7 @@ public class SchoolSystem {
 			else
 			{
 				System.out.println("Please enter a valid input");
-				
+
 				main(null);
 			}
 
@@ -82,10 +83,10 @@ public class SchoolSystem {
 	public static void addStudent() 
 
 	{
-		studRecs.add(new Student());
+		studRecs.add(new Student(null, null, null, null, null, 0, null, null));
 
 
-		Student student1 = new Student();
+		//Student student1 = new Student();
 		System.out.println("Please type in your first name");
 		studRecs.get(studRecs.size() -1).setFirstName(scn.nextLine());
 		System.out.println("Please type in your last name");
@@ -99,6 +100,9 @@ public class SchoolSystem {
 		studRecs.get(studRecs.size() -1).setStreetAdress(scn.nextLine());
 		System.out.println("Please type in your postal code");
 		studRecs.get(studRecs.size() -1).setPostalCode(scn.nextLine());
+
+		//for (int i =0; i<studRecs.get(studRecs.size() -1).getPostalCode.length(); i++)
+
 		System.out.println("Please type in the name of the city you live in");
 		studRecs.get(studRecs.size() -1).setCity(scn.nextLine());
 		System.out.println("Please type in the name of the province you live in");
@@ -114,7 +118,6 @@ public class SchoolSystem {
 			do{
 				System.out.println("Please type in a valid number ");
 				studRecs.get(studRecs.size() -1).setPhoneNumber((Long.parseLong(scn.nextLine())));
-				//System.out.println("");
 			}while (studRecs.get(studRecs.size() -1).getPhoneNumber() >= 9999999999.0 || studRecs.get(studRecs.size() -1).getPhoneNumber() <= 1000000000.0);
 
 			print();
@@ -139,6 +142,7 @@ public class SchoolSystem {
 		System.out.println("City:  " + studRecs.get(studRecs.size() -1).getCity());
 		System.out.println("Province:  " + studRecs.get(studRecs.size() -1).getProvince());
 		System.out.println("Phone Number:  " + studRecs.get(studRecs.size() -1).getPhoneNumber());
+		
 
 	}
 
@@ -160,9 +164,9 @@ public class SchoolSystem {
 		{
 			System.out.println("Please enter yes or no");
 		}
-		
+
 	}
-	
+
 
 }
 

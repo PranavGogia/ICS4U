@@ -29,6 +29,12 @@ public class Student {
 
 	public Student(){
 		
+		try {
+			throw new InvalidInputException();
+		} catch (InvalidInputException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.studentNumber = idGenerator;
 		idGenerator++;
 	}

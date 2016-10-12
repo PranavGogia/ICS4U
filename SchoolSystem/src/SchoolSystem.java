@@ -6,9 +6,18 @@ public class SchoolSystem {
 
 	public static ArrayList<Student> studRecs = new ArrayList<Student>();
 
-
+	public static String answer = null;
 
 	public static void main(String[] args) {
+
+
+		menu();
+
+	}
+
+
+	public static void menu()
+	{
 		// TODO Auto-generated method stub
 
 
@@ -16,9 +25,10 @@ public class SchoolSystem {
 
 		Scanner scnMain = new Scanner(System.in);
 		int mainCounter = 0;
+		
 
-
-		System.out.println("What would like to do? Please type in the number of the task you would like to perform");
+		System.out.println("What would like to do?");
+		System.out.println(" Please type in the number of the task you would like to perform");
 		System.out.println("1. Enter a new student");
 		System.out.println("2. Print student");
 		System.out.println("3. Print all students");
@@ -38,11 +48,13 @@ public class SchoolSystem {
 			}	
 			else if(mainCounter == 2 )
 			{
-				System.out.println("Print student");	
+				
+				printStudent(answer);
 			}	
 			else if(mainCounter == 3 )
 			{
-				System.out.println("Print all student");		
+				
+				printAllStudents();
 			}	
 			else if(mainCounter == 4 )
 			{
@@ -70,12 +82,6 @@ public class SchoolSystem {
 
 
 
-
-
-
-
-
-
 	}
 
 
@@ -83,6 +89,7 @@ public class SchoolSystem {
 	public static void addStudent() 
 
 	{
+		studRecs.trimToSize();
 		studRecs.add(new Student(null, null, null, null, null, 0, null, null));
 
 
@@ -94,10 +101,37 @@ public class SchoolSystem {
 		System.out.println("Please type in your birthdate in the dd/mm/yyyy format");
 		studRecs.get(studRecs.size() -1).setBirthDate((((scn.nextLine()))));
 
+		System.out.println("Do you live in a house or an apartment?");
+		answer= scn.nextLine();
+		if (answer.equalsIgnoreCase("house"))
+		{
+			System.out.println("Please type in your your adress");
+			studRecs.get(studRecs.size() -1).setStreetAdress(scn.nextLine());
+		}
+		else if (answer.equalsIgnoreCase("apartment"))
+		{
+			System.out.println("Please type in the adress(dont type in the unit number)");
+			studRecs.get(studRecs.size() -1).setStreetAdress(scn.nextLine());
+
+			System.out.println("Please type in the unit number");
+			studRecs.get(studRecs.size() -1).setApartment(((((scn.nextLine())))));
 
 
-		System.out.println("Please type in your your adress");
-		studRecs.get(studRecs.size() -1).setStreetAdress(scn.nextLine());
+		}
+		else 
+		{
+
+
+
+			do{
+				answer= scn.nextLine();
+
+			}while(answer.equalsIgnoreCase("house") ||answer.equalsIgnoreCase("apartment") );
+
+		}
+
+
+
 		System.out.println("Please type in your postal code");
 		studRecs.get(studRecs.size() -1).setPostalCode(scn.nextLine());
 
@@ -112,6 +146,9 @@ public class SchoolSystem {
 		//scn.nextLine();
 
 
+
+
+
 		if (studRecs.get(studRecs.size() -1).getPhoneNumber() >= 9999999999.0 || studRecs.get(studRecs.size() -1).getPhoneNumber() <= 1111111111)
 		{
 
@@ -120,31 +157,22 @@ public class SchoolSystem {
 				studRecs.get(studRecs.size() -1).setPhoneNumber((Long.parseLong(scn.nextLine())));
 			}while (studRecs.get(studRecs.size() -1).getPhoneNumber() >= 9999999999.0 || studRecs.get(studRecs.size() -1).getPhoneNumber() <= 1000000000.0);
 
-			print();
+
+			
 		}
 
 		else 
 		{
-			print();
+			System.out.println("A new student has been added to the system!");
+			menu();
 		}
 
 
-
-	}
-
-	public static void print()
-	{
-		System.out.println("First Name:  " + studRecs.get(studRecs.size() -1).getFirstName());
-		System.out.println("Last Name:  " + studRecs.get(studRecs.size() -1).getLastName());
-		System.out.println("Birthdate:  " + studRecs.get(studRecs.size() -1).getBirthDate());
-		System.out.println("Adress:  " + studRecs.get(studRecs.size() -1).getStreetAdress());
-		System.out.println("Postal Code:  " + studRecs.get(studRecs.size() -1).getPostalCode());
-		System.out.println("City:  " + studRecs.get(studRecs.size() -1).getCity());
-		System.out.println("Province:  " + studRecs.get(studRecs.size() -1).getProvince());
-		System.out.println("Phone Number:  " + studRecs.get(studRecs.size() -1).getPhoneNumber());
 		
 
 	}
+
+	
 
 
 	public static void quit()
@@ -153,7 +181,7 @@ public class SchoolSystem {
 		System.out.println("Are you sure?");
 		if (scn.nextLine().equalsIgnoreCase("Yes"))
 		{
-			System.out.println("Thank you for using PranavOrganizerThing or POT");
+			System.out.println("Thank you for using PranavOrganizerThing (POT)");
 			System.exit(0);
 		}
 		else if ((scn.nextLine().equalsIgnoreCase("No")))
@@ -168,22 +196,72 @@ public class SchoolSystem {
 	}
 
 
+	public static void printStudent(String answer)
+	{
+
+		if (answer.equalsIgnoreCase("house"))
+		{
+			System.out.println("");
+			System.out.println("");
+			System.out.println("");
+			System.out.println("First Name:  " + studRecs.get(studRecs.size() -1).getFirstName());
+			System.out.println("Last Name:  " + studRecs.get(studRecs.size() -1).getLastName());
+			System.out.println("Birthdate:  " + studRecs.get(studRecs.size() -1).getBirthDate());
+			System.out.println("Adress:  " +  studRecs.get(studRecs.size() -1).getStreetAdress());
+			System.out.println("Postal Code:  " + studRecs.get(studRecs.size() -1).getPostalCode());
+			System.out.println("City:  " + studRecs.get(studRecs.size() -1).getCity());
+			System.out.println("Province:  " + studRecs.get(studRecs.size() -1).getProvince());
+			System.out.println("Phone Number:  " + studRecs.get(studRecs.size() -1).getPhoneNumber());
+			System.out.println("");
+			System.out.println("");
+			System.out.println("");
+			menu();		
+		}
+		else 
+		{
+			System.out.println("");
+			System.out.println("");
+			System.out.println("");
+			System.out.println("First Name:  " + studRecs.get(studRecs.size() -1).getFirstName());
+			System.out.println("Last Name:  " + studRecs.get(studRecs.size() -1).getLastName());
+			System.out.println("Birthdate:  " + studRecs.get(studRecs.size() -1).getBirthDate());
+			System.out.println("Adress:  " + "(" + studRecs.get(studRecs.size() -1).getApartment() + ")" + studRecs.get(studRecs.size() -1).getStreetAdress());
+			System.out.println("Postal Code:  " + studRecs.get(studRecs.size() -1).getPostalCode());
+			System.out.println("City:  " + studRecs.get(studRecs.size() -1).getCity());
+			System.out.println("Province:  " + studRecs.get(studRecs.size() -1).getProvince());
+			System.out.println("Phone Number:  " + studRecs.get(studRecs.size() -1).getPhoneNumber());
+			System.out.println("");
+			System.out.println("");
+			System.out.println("");
+			menu();	
+		}
+
+	}
+
+	public static void printAllStudents()
+	{
+
+		for (int x = 0; x <= studRecs.size(); x++)
+		{
+
+			System.out.println("");
+			System.out.println("");
+			System.out.println("");
+			System.out.println("First Name:  " + studRecs.get(studRecs.size()+x).getFirstName());
+			System.out.println("Last Name:  " + studRecs.get(studRecs.size()+x).getLastName());
+			System.out.println("Birthdate:  " + studRecs.get(studRecs.size()+x).getBirthDate());
+			System.out.println("Adress:  " + studRecs.get(studRecs.size()+x).getStreetAdress());
+			System.out.println("Postal Code:  " + studRecs.get(studRecs.size()+x).getPostalCode());
+			System.out.println("City:  " + studRecs.get(studRecs.size()+x).getCity());
+			System.out.println("Province:  " + studRecs.get(studRecs.size()+x).getProvince());
+			System.out.println("Phone Number:  " + studRecs.get(studRecs.size()+x).getPhoneNumber());
+			System.out.println("");
+			System.out.println("");
+			System.out.println("");
+			menu();
+		}
+	}
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

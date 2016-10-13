@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class SchoolSystem {
@@ -25,7 +26,7 @@ public class SchoolSystem {
 
 		Scanner scnMain = new Scanner(System.in);
 		int mainCounter = 0;
-		
+
 
 		System.out.println("What would like to do?");
 		System.out.println(" Please type in the number of the task you would like to perform");
@@ -34,6 +35,7 @@ public class SchoolSystem {
 		System.out.println("3. Print all students");
 		System.out.println("4. Remove student");
 		System.out.println("5. Replace student info");
+		System.out.println("6. Sort the list");
 		System.out.println("10. Quit");
 
 		do {
@@ -48,12 +50,12 @@ public class SchoolSystem {
 			}	
 			else if(mainCounter == 2 )
 			{
-				
+
 				printStudent(answer);
 			}	
 			else if(mainCounter == 3 )
 			{
-				
+
 				printAllStudents();
 			}	
 			else if(mainCounter == 4 )
@@ -66,6 +68,11 @@ public class SchoolSystem {
 			{
 				System.out.println("Replace student info");	
 			}	
+			else if(mainCounter == 6)
+			{
+				Collections.sort(studRecs);
+				
+			}
 			else if( mainCounter == 10)
 			{
 				quit();	
@@ -115,27 +122,49 @@ public class SchoolSystem {
 
 			System.out.println("Please type in the unit number");
 			studRecs.get(studRecs.size() -1).setApartment(((((scn.nextLine())))));
-
-
 		}
 		else 
 		{
-
-
-
 			do{
 				answer= scn.nextLine();
-
 			}while(answer.equalsIgnoreCase("house") ||answer.equalsIgnoreCase("apartment") );
-
 		}
-
-
-
 		System.out.println("Please type in your postal code");
 		studRecs.get(studRecs.size() -1).setPostalCode(scn.nextLine());
 
-		//for (int i =0; i<studRecs.get(studRecs.size() -1).getPostalCode.length(); i++)
+		String date = studRecs.get(studRecs.size() -1).getPostalCode();
+
+		char [] charArray = date.toCharArray();
+		if (charArray.length < 6 || charArray.length >6)
+		{
+			do {
+				studRecs.get(studRecs.size() -1).setPostalCode((((scn.nextLine()))));
+			}while((charArray.length < 6 || charArray.length >6));
+
+			if ((charArray[0] >= 'a' && charArray[0] <= 'z') && (charArray[1] >= '0' && charArray[1] <= '9') && (charArray[2] >= 'a' && charArray[2] <= 'z') && (charArray[3] >= '0' && charArray[3] <= '9')&& (charArray[4] >= 'a' && charArray[4] <= 'z')&& (charArray[5] >= '0' && charArray[1] <= '9'))
+			{
+				System.out.println("It works!!!");
+			}
+		}
+
+		else
+		{
+			if ((charArray[0] >= 'a' && charArray[0] <= 'z') && (charArray[1] >= '0' && charArray[1] <= '9') && (charArray[2] >= 'a' && charArray[2] <= 'z') && (charArray[3] >= '0' && charArray[3] <= '9')&& (charArray[4] >= 'a' && charArray[4] <= 'z')&& (charArray[5] >= '0' && charArray[1] <= '9'))
+			{
+				System.out.println("It works2!!!");
+			}
+			else 
+			{
+				do{
+					System.out.println("It works3!!!");
+				}while (!(charArray[0] >= 'a' && charArray[0] <= 'z') && !(charArray[1] >= '0' && charArray[1] <= '9') && !(charArray[2] >= 'a' && charArray[2] <= 'z') && !(charArray[3] >= '0' && charArray[3] <= '9')&& !(charArray[4] >= 'a' && charArray[4] <= 'z')&& !(charArray[5] >= '0' && charArray[1] <= '9'));
+
+				System.out.println("It works4!!!");
+			}
+		}
+
+
+		
 
 		System.out.println("Please type in the name of the city you live in");
 		studRecs.get(studRecs.size() -1).setCity(scn.nextLine());
@@ -158,7 +187,7 @@ public class SchoolSystem {
 			}while (studRecs.get(studRecs.size() -1).getPhoneNumber() >= 9999999999.0 || studRecs.get(studRecs.size() -1).getPhoneNumber() <= 1000000000.0);
 
 
-			
+
 		}
 
 		else 
@@ -168,11 +197,11 @@ public class SchoolSystem {
 		}
 
 
-		
+
 
 	}
 
-	
+
 
 
 	public static void quit()
@@ -241,7 +270,7 @@ public class SchoolSystem {
 	public static void printAllStudents()
 	{
 
-		for (int x = 0; x <= studRecs.size(); x++)
+		for (int x = -1; x <= studRecs.size(); x++)
 		{
 
 			System.out.println("");

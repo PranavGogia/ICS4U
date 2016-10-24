@@ -1,7 +1,7 @@
 /*Pranav Gogia
  * September 19,2016
  * TowerofHanoi
- * This program takes in the number of discs and gives 
+ * This program takes in the number of discs and gives the step ny instructions on how to solve the puzzle
  */
 package pranav;
 // import the scanner object

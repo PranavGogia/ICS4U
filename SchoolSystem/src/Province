@@ -1,0 +1,11 @@
+/*
+ * SchoolSystem Project
+ *  Pranav Gogia
+ * This program take in the information about a student, it can then remove the info, edit it , save it to file and load it from file
+ */
+
+// this enum class holds the enum constants that are used for the province
+public enum Province {
+	ALBERTA, BRITISHCOLUMBIA, MANITOBA, NEWBRUNSWICK, NEWFOUNDLANDANDLABRADOR, NOVASCOTIA, NORTHWESTTERRITORIES, NUNAVUT, ONTARIO, PRINCEEDWARDISLAND, QUEBEC, SASKATCHEWAN, YUKON
+
+}

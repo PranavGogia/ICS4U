@@ -1,53 +1,52 @@
-
-
-
-
-public class Student  implements Comparable{
-
-	
+/*
+ * SchoolSystem Project
+ *  Pranav Gogia
+ * This program take in the information about a student, it can then remove the info, edit it , save it to file and load it from file
+ */
+public class Student implements Comparable { 
+	// initialize all the variables
 	private String firstName;
 	private String lastName;
-	private String streetAdress;
+	private String phoneNumber;
+	private String address;
 	private String city;
-	private String province;
-	private long phoneNumber;
+	private Province province;
 	private String postalCode;
-	private String birthDate;
-	private static long idGenerator = 342000000;
-	private long studentNumber;
-	private String apartment;
-	public Student (String name ,String secondName, String adress, String municipality, String lprovince , long number,String post, String birth ){
-
-
+	private String birthday;
+	// initialize the id generator
+	private static long idGenerator=300000000;
+	private long studentNumber = idGenerator;
+	// initialize all the variables
+	public Student(String name, String otherName, String phone, String home, String town, Province state, String code, String bDay){
 		setFirstName(name);
-		setLastName(secondName);
-		setStreetAdress(adress);
-		setCity(municipality);
-		setProvince(lprovince);
-		setPhoneNumber(number);
-		setPostalCode(post);
-		setBirthDate(birth);
-
+		setLastName(otherName);
+		setPhoneNumber(phone);
+		setAddress(home);
+		setCity(town);
+		setProvince(state);
+		setPostalCode(code);
+		setBirthday(bDay);
+		setStudentNumber();
 	}
-
-	
-	
-	
-
-	public Student(){
-
-		try {
-			throw new InvalidInputException();
-		} catch (InvalidInputException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		this.studentNumber = idGenerator;
+	public Student(String name, String otherName, String phone, String home, String town, String string, String code,
+			String bDay) {
+		// TODO Auto-generated constructor stub
+	}
+	/*public Student(){
+		this.studentNumber=idGenerator;
+		idGenerator++;
+	}*/
+	/**
+	 * @return the studentNumber
+	 */
+	public long getStudentNumber(){
+		return studentNumber;
+	}
+	// sets the student number
+	public void setStudentNumber(){
+		++studentNumber;
 		idGenerator++;
 	}
-
-
-
 	/**
 	 * @return the firstName
 	 */
@@ -56,19 +55,11 @@ public class Student  implements Comparable{
 	}
 	/**
 	 * @param firstName the firstName to set
+	 * @throws InvalidInputException 
 	 */
-	public void setFirstName(String firstName) {
+	public void setFirstName(String firstName){
 		this.firstName = firstName;
 	}
-
-
-
-
-
-
-
-
-
 	/**
 	 * @return the lastName
 	 */
@@ -82,16 +73,33 @@ public class Student  implements Comparable{
 		this.lastName = lastName;
 	}
 	/**
-	 * @return the streetAdress
+	 * @return the phoneNumber
 	 */
-	public String getStreetAdress() {
-		return streetAdress;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 	/**
-	 * @param streetAdress the streetAdress to set
+	 * @param phoneNumber the phoneNumber to set
 	 */
-	public void setStreetAdress(String streetAdress) {
-		this.streetAdress = streetAdress;
+	public void setPhoneNumber(String phoneNumber) {
+
+		this.phoneNumber = phoneNumber;
+		return;
+
+
+	}
+
+	/**
+	 * @return the address
+	 */
+	public String getAddress() {
+		return address;
+	}
+	/**
+	 * @param address the address to set
+	 */
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	/**
 	 * @return the city
@@ -108,111 +116,79 @@ public class Student  implements Comparable{
 	/**
 	 * @return the province
 	 */
-	public String getProvince() {
+	public Province getProvince() {
 		return province;
 	}
 	/**
 	 * @param province the province to set
 	 */
-	public void setProvince(String province) {
+	public void setProvince(Province province) {
 		this.province = province;
 	}
-
+	/**
+	 * @return the postalCode
+	 */
 	public String getPostalCode() {
+
 		return postalCode;
 	}
 	/**
 	 * @param postalCode the postalCode to set
 	 */
 	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
-	}
+		this.postalCode=postalCode;
 
-
-
-	/**
-	 * @return the birthDate
-	 */
-	public String getBirthDate() {
-		return birthDate;
-	}
-	/**
-	 * @param birthDate the birthDate to set
-	 */
-	public void setBirthDate(String birthDate) {
-		this.birthDate = birthDate;
-	}
-	/**
-	 * @return the phoneNumber
-	 */
-	public long getPhoneNumber() {
-		return phoneNumber;
-	}
-	/**
-	 * @param phoneNumber the phoneNumber to set
-	 */
-	public void setPhoneNumber(long phoneNumber) {
-		this.phoneNumber = phoneNumber;
 	}
 
 
 	/**
-	 * @return the apartment
+	 * @return the birthday
 	 */
-	public String getApartment() {
-		return apartment;
+	public String getBirthday() {
+		return birthday;
 	}
-
-
 	/**
-	 * @param apartment the apartment to set
+	 * @param birthday the birthday to set
 	 */
-	public void setApartment(String apartment) {
-		this.apartment = apartment;
+	public void setBirthday(String birthDay) {
+		this.birthday = birthDay;
 	}
+	/**
+	 * @param birthday the birthday to set
+	 */
+	public int compareTo(Object j){
+		Student tempStudent=(Student)j;
+		return this.getLastName().compareTo(tempStudent.getLastName());
 
-
-	public String toString()
-	{
-		return apartment;
-		
 	}
-
-
-	public boolean equals(Student s)
-	{
-		return false;
-		
+	/**
+	 * @param student changes all variables to strings
+	 */
+	public String toString(Student x){
+		return studentNumber+","+firstName+","+lastName+","+phoneNumber+","+address+","+city+","+province+","+postalCode+","+birthday;
 	}
-	
-	
-	@Override
-	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-		return 0;
+	/**
+	 * @param student sets student number
+	 */
+	public boolean equals(Student x){
+		if (this.studentNumber==x.studentNumber)
+			return true;
+		else
+			return false;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
-
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 

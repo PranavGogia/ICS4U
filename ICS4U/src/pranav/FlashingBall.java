@@ -1,3 +1,8 @@
+package pranav;
+//Pranav Gogia
+//January 31, 2017
+//This is a dodgeball game, running into the balls even once will kill you
+
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -13,7 +18,11 @@ public class FlashingBall extends MovingObject {
 	/**
 	 * The radius of the ball.
 	 */
-	private int radius;
+	public int radius;
+	public int getRadius ()
+	{
+		return radius;
+	}
 	/**
 	 * Counts the frames between flash on/off.
 	 */
@@ -44,10 +53,10 @@ public class FlashingBall extends MovingObject {
 	 * @param bottom
 	 *            The bottom edge.
 	 */
-	public FlashingBall(double x, double y, int left, int right, int top, int bottom) {
+	public FlashingBall(int x, int y, int left, int right, int top, int bottom) {
 		super(x, y, left + 10, right - 10, top + 10, bottom - 10);
 		// numbers above must match the radius
-		radius = 10;
+		radius = 50;
 		counter = 0;
 		flashSpeed = (int) (Math.random() * 5 + 5);
 		filledIn = true;
@@ -81,12 +90,12 @@ public class FlashingBall extends MovingObject {
 		g.setColor(color);
 		g.fillOval(drawX, drawY, radius * 2, radius * 2);
 		if (!filledIn) {
-			g.setColor(Color.white);
+			g.setColor(Color.green);
 			g.fillOval(drawX + radius / 2, drawY + radius / 2, radius, radius);
 		}
 
 	}
-	
+
 	/**
 	 * Returns true if the ball is filled in.
 	 * 
@@ -96,3 +105,5 @@ public class FlashingBall extends MovingObject {
 		return filledIn;
 	}
 }
+
+	
